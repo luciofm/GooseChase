@@ -1,7 +1,6 @@
 package com.luciofm.goosechase.listing;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import com.luciofm.goosechase.R;
 
 public class MissionListFragment extends Fragment {
 
-    private MissionListViewModel mViewModel;
+    private MissionListViewModel viewModel;
     private MissionsAdapter adapter;
 
     @Override
@@ -37,8 +36,10 @@ public class MissionListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MissionListViewModel.class);
-        mViewModel.listMissions().observe(getViewLifecycleOwner(),
+        viewModel = new ViewModelProvider(this,
+                new MissionListViewModelFactory(requireActivity().getApplication()))
+                .get(MissionListViewModel.class);
+        viewModel.listMissions().observe(getViewLifecycleOwner(),
                 missions -> adapter.setMissions(missions));
 
         ((MainActivity) requireActivity()).setTitle(R.string.app_name);

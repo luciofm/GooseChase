@@ -1,12 +1,11 @@
 package com.luciofm.goosechase.detail
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import com.luciofm.goosechase.data.GooseChaseDb
+import androidx.lifecycle.ViewModel
+import com.luciofm.goosechase.data.MissionDao
 
 class MissionDetailViewModel(
-    application: Application,
+    missionDao: MissionDao,
     missionId: Long
-) : AndroidViewModel(application) {
-    val mission = GooseChaseDb.getInstance(getApplication()).missionDao().mission(missionId)
+) : ViewModel() {
+    val mission = missionDao.mission(missionId)
 }

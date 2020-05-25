@@ -16,9 +16,7 @@ public class MissionViewHolder extends RecyclerView.ViewHolder {
     public MissionViewHolder(ListItemMissionBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
-        binding.setClickListener(v -> {
-            navigateToMission(v, binding.getMission());
-        });
+        binding.setClickListener(v -> navigateToMission(v, binding.getMission()));
     }
 
     private void navigateToMission(View view, Mission mission) {

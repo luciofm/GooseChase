@@ -1,23 +1,21 @@
 package com.luciofm.goosechase.listing;
 
-import android.app.Application;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
-import com.luciofm.goosechase.data.GooseChaseDb;
 import com.luciofm.goosechase.data.Mission;
+import com.luciofm.goosechase.data.MissionDao;
 
 import java.util.List;
 
-public class MissionListViewModel extends AndroidViewModel {
+public class MissionListViewModel extends ViewModel {
+    private final MissionDao missionDao;
 
-    public MissionListViewModel(@NonNull Application application) {
-        super(application);
+    public MissionListViewModel(MissionDao missionDao) {
+        this.missionDao = missionDao;
     }
 
     public LiveData<List<Mission>> listMissions() {
-        return GooseChaseDb.getInstance(getApplication()).missionDao().missions();
+        return missionDao.missions();
     }
 }

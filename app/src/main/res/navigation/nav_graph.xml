@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/missionListFragment">
+
+    <fragment
+        android:id="@+id/missionListFragment"
+        android:name="com.luciofm.goosechase.listing.MissionListFragment"
+        android:label="mission_list_fragment"
+        tools:layout="@layout/mission_list_fragment" >
+        <action
+            android:id="@+id/action_missionListFragment_to_missionDetailFragment"
+            app:destination="@id/missionDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/missionDetailFragment"
+        android:name="com.luciofm.goosechase.detail.MissionDetailFragment"
+        tools:layout="@layout/mission_detail_fragment">
+        <argument
+            android:name="missionId"
+            app:argType="long" />
+    </fragment>
+</navigation>

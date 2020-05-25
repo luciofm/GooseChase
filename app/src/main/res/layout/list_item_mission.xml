@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="mission"
+            type="com.luciofm.goosechase.data.Mission" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="@{clickListener}">
+
+        <ImageView
+            android:id="@+id/icon"
+            app:missionType="@{mission.type}"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerInside"
+            android:background="@drawable/image_background"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_baseline_photo_camera" />
+
+        <TextView
+            android:id="@+id/score"
+            android:text="@{mission.points + ` pts`}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            tools:text="150 pts" />
+
+        <TextView
+            android:id="@+id/title"
+            android:text="@{mission.name}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            style="@style/TextAppearance.MaterialComponents.Headline7"
+            app:layout_constraintTop_toTopOf="@id/icon"
+            app:layout_constraintStart_toEndOf="@id/icon"
+            app:layout_constraintEnd_toStartOf="@id/score"
+            tools:text="Let's Play! PS4 Booth" />
+
+        <TextView
+            android:id="@+id/description"
+            android:text="@{mission.description}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            tools:text="Take a picture or a selfie of yourself playing one of the PS4 games!"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
